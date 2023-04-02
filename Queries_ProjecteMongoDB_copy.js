@@ -20,22 +20,22 @@ db.publicacions.aggregate([
       localField: "ISBN",
       foreignField: "ISBN",
       as: "Editorial"
-    }
-  },
-  {
-    $match: {
-      "Editorial.nom": "Juniper Books"
-    }
-  },
-  {
-    $group: {
-      _id: null,
-      maxPrice: { $max: "$preu" },
-      minPrice: { $min: "$preu" },
-      avgPrice: { $avg: "$preu" }
-    }
-  }
-])
+    }}])
+// ,
+//   {
+//     $match: {
+//       "Editorial.nom": "Juniper Books"
+//     }
+//   },
+//   {
+//     $group: {
+//       _id: null,
+//       maxPrice: { $max: "$preu" },
+//       minPrice: { $min: "$preu" },
+//       avgPrice: { $avg: "$preu" }
+//     }
+//   }
+// ])
 
 
 // 3. Artistes (nom artístic) que participen en més de 5 publicacions com a dibuixant.
@@ -69,17 +69,77 @@ db.publicacions.aggregate([
 
 
 // 4. Numero de col·leccions per gènere. Mostra gènere i número total. 
+db.colleccions.aggregate([
+   { $unwind: "$genere" },
+   {
+      $group: {
+         _id: "$genere",
+         total: { $sum: 1 }
+      }
+   },
+   {
+      $project: {
+         _id: 0,
+         genero: "$_id",
+         total: 1
+      }
+   }
+])
 
-
-// 5. Per cada editorial, mostrar el recompte de col·leccions finalitzades i no 
-// finalitzades.
-
+// 5. Per cada editorial, mostrar el recompte de col·leccions finalitzades i no finalitzades.
+db.colleccions.aggregate([
+    {$group : {
+        _id: ["$Editorial.Nom","$tancada"],
+        count: { $sum: 1 }
+    }}])
 
 // 6. Mostrar les 2 col·leccions ja finalitzades amb més publicacions. Mostrar 
 // editorial i nom col·lecció.
+db.colleccions.aggregate([
+    {$match: {tancada: true}},
+    {$group: { _id: { nom: "$Nom", editorial: "$Editorial.Nom" }, total_publicacions: {$sum: {$size: "$ISBN"}}}},
+    {$sort: {total_publicacions: -1}},
+    {$limit: 2}
+])
+//De moment ho fem així pel problema de any_inici. Sino, fer project i ya
 
 
 // 7. Mostrar el país d’origen de l’artista o artistes que han fet més guions.
+db.artistes.aggregate([
+  {
+    $lookup: {
+      from: "publicacions",
+      localField: "Nom_artistic",
+      foreignField: "guionistes",
+      as: "guiones"
+    }
+  },
+  {
+    $unwind: "$guiones"
+  },
+  {
+    $group: {
+      _id: "$pais",
+      num_guiones: {
+        $sum: {
+          $cond: [
+            { $isArray: "$guiones.guionistes" },
+            { $size: "$guiones.guionistes" },
+            0
+          ]
+        }
+      }
+    }
+  },
+  {
+    $sort: {
+      num_guiones: -1
+    }
+  },
+  {
+    $limit: 1
+  }
+])
 
 
 // 8. Mostrar les publicacions amb tots els personatges de tipus “heroe”.
