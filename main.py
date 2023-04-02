@@ -16,15 +16,23 @@ Port = 27017
 DSN = "mongodb://{}:{}".format(Host,Port)
 conn = MongoClient(DSN)
 #Selecciona la base de dades a utilitzar --> test (si es la primera vegada la crea)
-bd = conn['test']
+bd = conn['ProjecteMongoDB']
 opts = Options()
 args = opts.parse()
 
 
 ### CREEM LES DIFERENTS COLECCIONS (si no ho estan)
 ll_coleccions = ['artistes', 'publicacions', 'colleccions']
+
+if("ProjecteMongoDB" in conn.list_database_names()):
+    print("La base de dades ProjecteMongoDB existeix en MongoDB")
+    print("Eliminant base de dades...")
+    conn.drop_database("ProjecteMongoDB")
+
+print("Creant base de dades...")
+bd = conn['ProjecteMongoDB']
 for nom_coleccio in ll_coleccions:
-    if(nom_coleccio not in bd.list_collection_names()):
+    if(nom_coleccio in bd.list_collection_names()):
         coll = bd.create_collection(nom_coleccio)
 
 
@@ -35,6 +43,7 @@ data_A = pd.read_csv("artistes.csv", delimiter=';')
 
 
 ### TRACTAMENT ESPECIAL PER A CADA CSV I CADA COLECCIÓ
+
     ## ARTISTES: (referència ja feta, data_A -> json)
 json_A = json.loads(data_A.to_json(orient='records'))
 
@@ -58,13 +67,13 @@ for i in dicc_Pu:
 json_P = dicc_Pu
 
     ## SEPAREM COL·LECCIO i deixem REFERENCIA amb PUBLICACIO!
-atr_c = ['NomColleccio', 'total_exemplars', 'genere', 'idioma', 'any_inici', 'any_fi', 'tancada',
+atr_c = ['NomColleccio', 'total_exemplars', 'genere', 'idioma', 'any_inici', 'tancada',
            'NomEditorial', 'responsable', 'adreca', 'pais']
 data_Cp = data_C.copy()
-data_Cg = data_Cp.groupby(atr_c).agg({'ISBN': lambda x: list(set(x))}).reset_index()
+data_Cg = data_Cp.groupby(atr_c).agg({'ISBN': lambda x: list(set(x))}).reset_index() #set per ordenar els ISBN
 dicc_C = data_Cg.to_dict(orient='records')
 
-    ## EDITORIAL dins de COL·LECCIÓ (embedden una vegada ja tinguem tot a diccionari)
+    ## EDITORIAL dins de COL·LECCIÓ (embedded una vegada ja tinguem tot a diccionari)
 # Assumim que cada colecció té sempre la mateixa editorial (cert) i per tant afegim aquestes dades al group by
 for i in dicc_C:
     # Canviem el format de genere (d'string a llista d'strings) i el nom de coleccio
