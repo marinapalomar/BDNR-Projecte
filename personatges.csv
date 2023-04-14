@@ -1,78 +1,78 @@
-nom;tipus;isbn;;;;;
-Gandalf;mago;1;;;;;
-Frodo;heroe;1;;;;;
-Samsagaz;segundo;1;;;;;
-Gandalf;mago;2;;;;;
-Frodo;heroe;2;;;;;
-Samsagaz;segundo;2;;;;;
-Gollum;segundo;2;;;;;
-Gandalf;mago;3;;;;;
-Frodo;heroe;3;;;;;
-Samsagaz;segundo;3;;;;;
-Legolas;heroe;3;;;;;
-Harry Potter;heroe;4;;;;;
-Hermione Granger;heroe;4;;;;;
-Ron Weasley;heroe;4;;;;;
-Harry Potter;heroe;5;;;;;
-Hermione Granger;segundo;5;;;;;
-Ron Weasley;segundo;5;;;;;
-Lord Voldemort;villano;5;;;;;
-Harry Potter;heroe;6;;;;;
-Hermione Granger;segundo;6;;;;;
-Ron Weasley;segundo;6;;;;;
-Lord Voldemort;villano;6;;;;;
-Harry Potter;heroe;7;;;;;
-Hermione Granger;segundo;7;;;;;
-Ron Weasley;segundo;7;;;;;
-Lord Voldemort;villano;7;;;;;
-Harry Potter;heroe;8;;;;;
-Hermione Granger;segundo;8;;;;;
-Ron Weasley;segundo;8;;;;;
-Lord Voldemort;villano;8;;;;;
-Harry Potter;heroe;9;;;;;
-Hermione Granger;segundo;9;;;;;
-Ron Weasley;segundo;9;;;;;
-Lord Voldemort;villano;9;;;;;
-Harry Potter;heroe;10;;;;;
-Hermione Granger;segundo;10;;;;;
-Ron Weasley;segundo;10;;;;;
-Lord Voldemort;villano;10;;;;;
-Harry Potter;heroe;11;;;;;
-Hermione Granger;segundo;11;;;;;
-Ron Weasley;segundo;11;;;;;
-Lord Voldemort;villano;11;;;;;
-Harry Potter;heroe;12;;;;;
-Hermione Granger;segundo;12;;;;;
-Ron Weasley;segundo;12;;;;;
-Lord Voldemort;villano;12;;;;;
-Dobby;segundo;12;;;;;
-Harry Potter;heroe;13;;;;;
-Hermione Granger;segundo;13;;;;;
-Lord Voldemort;villano;13;;;;;
-Harry Potter;heroe;14;;;;;
-Hermione Granger;segundo;14;;;;;
-Lord Voldemort;villano;14;;;;;
-Harry Potter;heroe;15;;;;;
-Hermione Granger;segundo;15;;;;;
-Lord Voldemort;villano;15;;;;;
-Harry Potter;heroe;16;;;;;
-Hermione Granger;segundo;16;;;;;
-Lord Voldemort;villano;16;;;;;
-Harry Potter;heroe;17;;;;;
-Hermione Granger;segundo;17;;;;;
-Lord Voldemort;villano;17;;;;;
-Harry Potter;heroe;18;;;;;
-Hermione Granger;segundo;18;;;;;
-Lord Voldemort;villano;18;;;;;
-Harry Potter;heroe;19;;;;;
-Hermione Granger;segundo;19;;;;;
-Lord Voldemort;villano;19;;;;;
-Daenerys Targaryen;heroe;20;;;;;
-Jon Snow;heroe;20;;;;;
-Arya Stark;heror;20;;;;;
-Jon Snow;heroe;21;;;;;
-Arya Stark;heror;21;;;;;
-Cersei Lannister;villano;21;;;;;
-Jon Snow;heroe;22;;;;;
-Sansa Stark;heroe;22;;;;;
-Dracula;protagonista;23;;;;;
+nom;tipus;isbn
+Gandalf;mago;1
+Frodo;heroe;1
+Samsagaz;segundo;1
+Gandalf;mago;2
+Frodo;heroe;2
+Samsagaz;segundo;2
+Gollum;segundo;2
+Gandalf;mago;3
+Frodo;heroe;3
+Samsagaz;segundo;3
+Legolas;heroe;3
+Harry Potter;heroe;4
+Hermione Granger;heroe;4
+Ron Weasley;heroe;4
+Harry Potter;heroe;5
+Hermione Granger;segundo;5
+Ron Weasley;segundo;5
+Lord Voldemort;villano;5
+Harry Potter;heroe;6
+Hermione Granger;segundo;6
+Ron Weasley;segundo;6
+Lord Voldemort;villano;6
+Harry Potter;heroe;7
+Hermione Granger;segundo;7
+Ron Weasley;segundo;7
+Lord Voldemort;villano;7
+Harry Potter;heroe;8
+Hermione Granger;segundo;8
+Ron Weasley;segundo;8
+Lord Voldemort;villano;8
+Harry Potter;heroe;9
+Hermione Granger;segundo;9
+Ron Weasley;segundo;9
+Lord Voldemort;villano;9
+Harry Potter;heroe;10
+Hermione Granger;segundo;10
+Ron Weasley;segundo;10
+Lord Voldemort;villano;10
+Harry Potter;heroe;11
+Hermione Granger;segundo;11
+Ron Weasley;segundo;11
+Lord Voldemort;villano;11
+Harry Potter;heroe;12
+Hermione Granger;segundo;12
+Ron Weasley;segundo;12
+Lord Voldemort;villano;12
+Dobby;segundo;12
+Harry Potter;heroe;13
+Hermione Granger;segundo;13
+Lord Voldemort;villano;13
+Harry Potter;heroe;14
+Hermione Granger;segundo;14
+Lord Voldemort;villano;14
+Harry Potter;heroe;15
+Hermione Granger;segundo;15
+Lord Voldemort;villano;15
+Harry Potter;heroe;16
+Hermione Granger;segundo;16
+Lord Voldemort;villano;16
+Harry Potter;heroe;17
+Hermione Granger;segundo;17
+Lord Voldemort;villano;17
+Harry Potter;heroe;18
+Hermione Granger;segundo;18
+Lord Voldemort;villano;18
+Harry Potter;heroe;19
+Hermione Granger;segundo;19
+Lord Voldemort;villano;19
+Daenerys Targaryen;heroe;20
+Jon Snow;heroe;20
+Arya Stark;heroe;20
+Jon Snow;heroe;21
+Arya Stark;heroe;21
+Cersei Lannister;villano;21
+Jon Snow;heroe;22
+Sansa Stark;heroe;22
+Dracula;protagonista;23
