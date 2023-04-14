@@ -1,4 +1,11 @@
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  1603751 - Francesc Albareda
+//  1600123 - Alba Fernández
+//  1605547 - Marina Palomar
+//  1598850 - Guillem Paz
+//
 // QUERIES PROJECTE MONGODB
 
 use ProjecteMongoDB
@@ -74,6 +81,7 @@ db.colleccions.aggregate([
    {$sort: {total: -1, genere: 1}}
 ])
 
+
 // 5. Per cada editorial, mostrar el recompte de col·leccions finalitzades i no finalitzades.
 db.colleccions.aggregate([
 {
@@ -82,8 +90,8 @@ db.colleccions.aggregate([
     
 }])
 
-// 6. Mostrar les 2 col·leccions ja finalitzades amb més publicacions. Mostrar 
-// editorial i nom col·lecció.
+
+// 6. Mostrar les 2 col·leccions ja finalitzades amb més publicacions. Mostrar editorial i nom col·lecció.
 db.colleccions.aggregate([
     {$match: {tancada: true}},
     {$group: { _id: { nom: "$Nom", editorial: "$Editorial.Nom" }, total_publicacions: {$sum: {$size: "$ISBN"}}}},
@@ -91,14 +99,6 @@ db.colleccions.aggregate([
     {$limit: 2},
     {$project: {"_id.nom": 1, "_id.editorial": 1}}
 ])
-//De moment ho fem així pel problema de any_inici. Sino, fer project i ya
-db.colleccions.aggregate([
-{$group: {_id: {collection: "$Nom", editorial: "$Editorial.Nom"},
- total_publicacions: {$sum: {$size: "$ISBN"}}}},
- {$match: {tancada: true}},
- {$sort: {total_publicacions: -1}},
- {$limit: 2},
- {$project: {"_id.editorial": 1, "_id.collection": 1}}])
 
 
 // 7. Mostrar el país d’origen de l’artista o artistes que han fet més guions.
@@ -126,13 +126,16 @@ db.artistes.aggregate([
 
 
 // 8. Mostrar les publicacions amb tots els personatges de tipus “heroe”.
-db.publicacions.find({ "personatges": { "$exists": true, "$not": { "$elemMatch": { "tipus": { "$ne": "heroe" } } } } }, { "ISBN": 1, "_id": 0 })
+db.publicacions.find(
+  { "personatges": { "$exists": true,
+                    "$not": { "$elemMatch": { "tipus": { "$ne": "heroe" } } } } }, 
+  { "ISBN": 1, "_id": 0 })
 
 
 // 9. Modificar el preu de les publicacions amb stock superior a 20 exemplars i incrementar-lo un 25%. 
 db.publicacions.updateMany( { stock: { $gt: 20 } }, { $mul: { preu: 1.25 } } )
 db.publicacions.aggregate([{$project: {stock: 1, preu:1}}])
 
-// 10. Mostrar ISBN i títol de les publicacions conjuntament amb tota la seva 
-// informació dels personatges
+
+// 10. Mostrar ISBN i títol de les publicacions conjuntament amb tota la seva informació dels personatges
 db.publicacions.aggregate([{$project: {_id:0, ISBN:1, titol: 1, personatges:1}}])
